@@ -3,3 +3,5 @@ This is an aplication developing with Javascript, OpenIA, VercerIA, twiland, sha
 
 ---
 
+## How it works
+First, to use this project you need has a OpenAI key and put this key on the .env file on root of project.

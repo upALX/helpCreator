@@ -67,7 +67,7 @@ export function VideoInputForm(){
     }
 
     async function handleUploadVideo(event: FormEvent<HTMLFormElement>){
-        event.preventDefault
+        event.preventDefault()
 
         const prompt = promptInputRef.current?.value
 

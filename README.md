@@ -1,5 +1,5 @@
 # HelpCreator
-This is an aplication developing with Javascript, OpenIA, VercerIA, twiland, shadcn-ui, React, Node and Prisma ORM to upload and create description to publish a vídeo online. 
+This is an application developed with Javascript, OpenIA, VerceRIA, twiland, shadcn-ui, React, Node and Prisma ORM that, by uploading a video, extracts information and creates possible descriptions and titles to improve ranking through SEO. 
 
 ---
 

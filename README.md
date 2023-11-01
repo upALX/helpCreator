@@ -35,7 +35,6 @@ pnpm run dev
 
 **If you have any problems with this app or have an idea that contributes, open a [issue](https://github.com/upALX/helpCreator/issues), [pull request](https://github.com/upALX/helpCreator/pulls) or find me on [Linkedin](https://www.linkedin.com/in/alxinc/). Don't forget to give the project a star 🌟 :D**
 
-
 ## License :unlock:
 
 This project is under the [MIT license](https://github.com/upALX/helpCreator/blob/main/LICENSE).

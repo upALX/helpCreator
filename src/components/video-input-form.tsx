@@ -61,7 +61,7 @@ export function VideoInputForm(){
             type: 'audio/mpeg'
         })
 
-        console.log('Convert fineshed')
+        console.log('Convert finished')
 
         return audioFile
     }
@@ -79,7 +79,8 @@ export function VideoInputForm(){
         
         const audioFile = await convertVideoToAudio(videoFile)
 
-        console.log(audioFile)
+        console.log(`Audio file: ${audioFile}`)
+        console.log(`prompt user: ${prompt}`)
     }
     
     const previewURL = useMemo(() => {

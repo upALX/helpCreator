@@ -7,6 +7,7 @@ import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
 import { getFFmpeg } from "@/lib/ffmpeg";
 import {fetchFile} from '@ffmpeg/util'
 import { api } from "@/lib/axios";
+import { PromptSelect } from "./prompt-select";
 
 type Status = 'waiting' | 'convert' | 'upload' | 'generate' | 'success'
 const statusMessages = {
@@ -16,8 +17,12 @@ const statusMessages = {
     'success': 'Success!!!'
 }
 
+interface VideoInputFormProps{
+    onVideoUploaded: (id: string) => void
+}
 
-export function VideoInputForm(){
+
+export function VideoInputForm(props: VideoInputFormProps){
     const [videoFile, setVideoFile] = useState<File | null>(null)
     const [status, setStatus] = useState<Status>('waiting')
     const promptInputRef = useRef<HTMLTextAreaElement>(null)
@@ -114,8 +119,9 @@ export function VideoInputForm(){
 
         setStatus('success')
 
-        console.log('Finished')
+        props.onVideoUploaded(videoId)
 
+        console.log('Finished')
     }
     
     const previewURL = useMemo(() => {

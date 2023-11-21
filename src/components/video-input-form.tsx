@@ -6,10 +6,20 @@ import { FileVideo, Upload } from "lucide-react";
 import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
 import { getFFmpeg } from "@/lib/ffmpeg";
 import {fetchFile} from '@ffmpeg/util'
+import { api } from "@/lib/axios";
+
+type Status = 'waiting' | 'convert' | 'upload' | 'generate' | 'success'
+const statusMessages = {
+    'convert': 'Converting...',
+    'generate': 'Transcribing...',
+    'upload': 'Uploading...',
+    'success': 'Success!!!'
+}
 
 
 export function VideoInputForm(){
     const [videoFile, setVideoFile] = useState<File | null>(null)
+    const [status, setStatus] = useState<Status>('waiting')
     const promptInputRef = useRef<HTMLTextAreaElement>(null)
 
     // Creating selection preview of video
@@ -76,11 +86,36 @@ export function VideoInputForm(){
         }
 
         //convert mp4 to mp3
+
+        setStatus('convert')
         
         const audioFile = await convertVideoToAudio(videoFile)
 
-        console.log(`Audio file: ${audioFile}`)
+        console.log(audioFile)
         console.log(`prompt user: ${prompt}`)
+
+        const dataVideo = new FormData()
+
+        dataVideo.append('file', audioFile)
+
+        setStatus('upload')
+
+        const response = await api.post('/video/upload', dataVideo)
+
+        console.log(response.data)
+
+        const videoId = response.data.video.id
+
+        setStatus('generate')
+
+        await api.post(`/video/${videoId}/transcription`, {
+            prompt
+        })
+
+        setStatus('success')
+
+        console.log('Finished')
+
     }
     
     const previewURL = useMemo(() => {
@@ -109,11 +144,16 @@ export function VideoInputForm(){
 
             <div className="space-y-2">
               <Label htmlFor="transcription_prompt">Transcription prompt</Label>
-              <Textarea ref={promptInputRef} id="transcription_prompt" className="h-20 leading-relaxed resize-none" placeholder="Include keywords mentioned on the video, separated with comma (,)."></Textarea>
+              <Textarea ref={promptInputRef} disabled={status != 'waiting'} id="transcription_prompt" className="h-20 leading-relaxed resize-none" placeholder="Include keywords mentioned on the video, separated with comma (,)."></Textarea>
             </div>
-            <Button type="submit" className="w-full">
-              Upload video...
-              <Upload className="w-4 h-4 ml-2"/>
+            <Button data-success={status == 'success'} disabled={status != 'waiting'} type="submit" className="w-full data-[success=true]:bg-emerald-900">
+                {status === 'waiting' ? (
+                    <>
+                        Upload video...
+                        <Upload className="w-4 h-4 ml-2"/>
+                    </>
+                ) : statusMessages[status]}
+              
             </Button>
           </form>
     )

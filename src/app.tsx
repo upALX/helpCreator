@@ -9,17 +9,21 @@ import { VideoInputForm } from "./components/video-input-form";
 import { PromptSelect } from "./components/prompt-select";
 import { useState } from "react";
 import {useCompletion} from 'ai/react';
+import { json } from "stream/consumers";
 
 export function App() {
   const [temperature, setTemperature] = useState(0.5)
   const [videoId, setVideoId] = useState<string | null>(null)
 
-  const {input, setInput, handleInputChange} = useCompletion({
+  const {input, setInput, handleInputChange, handleSubmit, completion, isLoading} = useCompletion({
     api: 'http://localhost:3333/completion',
     body: {
       videoId,
       temperature
-    }
+    },
+    headers: {
+      'Content-type': 'application/json',
+    },
   })
 
   return (
@@ -42,7 +46,7 @@ export function App() {
         <div className="flex flex-col flex-1 gap-4"> 
           <div className="grid grid-rows-2 gap-4 flex-1"> 
             <Textarea className="resize-none p-5 leading-relaxed" placeholder="Insert your prompt..." value={input} onChange={handleInputChange}/>
-            <Textarea className="resize-none p-5 leading-relaxed" placeholder="Result from I.A..."/>
+            <Textarea className="resize-none p-5 leading-relaxed" placeholder="Result from I.A..." readOnly value={completion}/>
             <p className="text-sm text-muted-foreground">Remember: you can use the variable <code className="text-violet-400">{'{transcription}'}</code> on your prompt to add the content of  selected video transcription.</p>
           </div>
         </div>
@@ -51,7 +55,7 @@ export function App() {
           <VideoInputForm onVideoUploaded={setVideoId}/>
 
           <Separator/>
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
               <Label>Prompt</Label>
               <PromptSelect onPromptSelected={setInput}/>
@@ -88,7 +92,7 @@ export function App() {
             
             <Separator/>
 
-            <Button type="submit" className="w-full"> Execute <Wand2 className="w-4 h-4 ml-2"/> </Button>
+            <Button disabled={isLoading} type="submit" className="w-full"> Execute <Wand2 className="w-4 h-4 ml-2"/> </Button>
 
           </form>
         </aside>

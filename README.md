@@ -1,9 +1,7 @@
 # HelpCreator
 This is an application developed with Javascript, OpenIA, VerceRIA, twiland, shadcn-ui, React, Node and Prisma ORM that, by uploading a video, extracts information and creates possible descriptions and titles to improve ranking through SEO. 
 
----
-
-👷🏿‍♂️**This project is under development**🛠️
+👷🏿‍♂️**This project is on MVP**🛠️
 
 ---
 
@@ -11,7 +9,9 @@ This is an application developed with Javascript, OpenIA, VerceRIA, twiland, sha
 ![HTML](https://img.shields.io/badge/-HTML-05122A?style=flat&logo=html5)&nbsp;
 ![CSS](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)&nbsp;
 ![JavaScript](https://img.shields.io/badge/-Typescript-05122A?style=flat&logo=typescript)&nbsp;
-![Vercel](https://img.shields.io/badge/-Vercel-05122A?style=flat&logo=Vercel)&nbsp;
+![react](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)&nbsp;
+![Tailwind](https://img.shields.io/badge/-Tailwind-05122A?style=flat&logo=tailwindcss)&nbsp;
+![shadcn/ui](https://img.shields.io/badge/-Shadcn/ui-05122A?style=flat&logo=shadcn/ui)&nbsp;
 
 ## How to use 🫁
 
@@ -24,7 +24,7 @@ git clone git@github.com:upALX/helpCreator.git
 2 - install all dependencies
 
 ```
-pnpm install  
+pnpm i  
 ```
 3 - run the project
 ```

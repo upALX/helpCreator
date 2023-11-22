@@ -20,7 +20,7 @@ export default defineConfig({
     react()
   ],
   optimizeDeps: {
-    exclude: ['@ffmepg/ffmpeg', '@ffmpeg/util']
+    exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util']
   },
   resolve: {
     alias: {

@@ -11,11 +11,14 @@ This is an application developed with Javascript, OpenIA, VerceRIA, twiland, sha
 ![JavaScript](https://img.shields.io/badge/-Typescript-05122A?style=flat&logo=typescript)&nbsp;
 ![react](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)&nbsp;
 ![Tailwind](https://img.shields.io/badge/-Tailwind-05122A?style=flat&logo=tailwindcss)&nbsp;
+![Axios](https://img.shields.io/badge/-Axios-05122A?style=flat&logo=Axios)&nbsp;
 ![shadcn/ui](https://img.shields.io/badge/-Shadcn/ui-05122A?style=flat&logo=shadcn/ui)&nbsp;
 
 ## How to use 🫁
 
-First, to use this project you need has a OpenAI key.
+First, to use this project you need has a OpenAI key and put your key on "OPENAIKEY" into a dotenv file.
+
+This must be configurated on server side of aplication, later this is configurated by view on front side. Access the server side [here.](https://github.com/upALX/HelpCreatorServerSide)
 
 1 - Clone this repo
 ```

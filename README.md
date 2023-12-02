@@ -44,4 +44,4 @@ This project is under the [MIT license](https://github.com/upALX/helpCreator/blo
 
 ---
 
-**Developed with 💜 by Alexandre**
+**Developed with 💜 by ME**

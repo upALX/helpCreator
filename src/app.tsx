@@ -46,7 +46,7 @@ export function App() {
         <div className="flex flex-col flex-1 gap-4"> 
           <div className="grid grid-rows-2 gap-4 flex-1"> 
             <Textarea className="resize-none p-5 leading-relaxed" placeholder="Insert your prompt..." value={input} onChange={handleInputChange}/>
-            <Textarea className="resize-none p-5 leading-relaxed" placeholder="Result from I.A..." readOnly value={completion}/>
+            <Textarea className="resize-none p-5 leading-relaxed" placeholder="Result from A.I..." readOnly value={completion}/>
             <p className="text-sm text-muted-foreground">Remember: you can use the variable <code className="text-violet-400">{'{transcription}'}</code> on your prompt to add the content of  selected video transcription.</p>
           </div>
         </div>
